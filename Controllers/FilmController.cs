@@ -90,5 +90,27 @@ namespace VideoLoanWebAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> LoanFilm(int filmId, int customerId )
+        {
+            var film = await _context.Films.FindAsync(filmId);
+            var customer = await _context.Customers.FindAsync(customerId);
+            
+
+            if(film == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                film.Avalibility = false;
+                _context.Films.Update(film);
+                customer.FilmsLoaned.Add(film);
+                _context.Customers.Update(customer);
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace VideoLoanWebAPI.Models
         public string DateAdded { get; set; }
         public DateTime DateReturn { get; set; }
 
+        public CustomerModel CustomerModel { get; set; }
+
         public FilmModel()
         {
             Reserved = false;

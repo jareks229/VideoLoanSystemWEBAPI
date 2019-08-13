@@ -12,6 +12,6 @@ namespace VideoLoanWebAPI.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public DateTime BirthDate { get; set; }
-        public int FilmsLoaned { get; set; }
+        public ICollection<FilmModel> FilmsLoaned { get; set; }
     }
 }
